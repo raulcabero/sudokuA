@@ -1,0 +1,10 @@
+<config>
+<outputtype>
+    <value>file</value>
+    <path>results</path>
+</outputtype>
+<level>
+    <value>medium</value>
+</level>
+<space_char>0</space_char>
+</config>

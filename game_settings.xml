@@ -1,0 +1,21 @@
+<settings>
+    <algorithms>
+        <algorithm name = "backtracking"></algorithm>
+        <algorithm name = "norvig"></algorithm>
+        <algorithm name = "x"></algorithm>
+    </algorithms>
+    <levels>
+        <level name = "easy">
+            <minholes>20</minholes>
+            <maxholes>25</maxholes>
+        </level>
+        <level name = "medium">
+            <minholes>30</minholes>
+            <maxholes>40</maxholes>
+        </level>
+        <level name = "hard">
+            <minholes>40</minholes>
+            <maxholes>50</maxholes>
+        </level>
+    </levels>
+</settings>

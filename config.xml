@@ -1,0 +1,15 @@
+<config>
+    <outputtype>
+        <value>file</value>
+        <path>results</path>
+    </outputtype>
+    <algorithm>
+        <value>backtracking</value>
+    </algorithm>
+    <level>
+        <value>medium</value>
+    </level>
+    <space_char>
+        <value>0</value>
+    </space_char>
+</config>
