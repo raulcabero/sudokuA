@@ -109,17 +109,17 @@ class Main():
 
         if (level_opts == "1"):
             # save Easy level 
-            #self.save_level("Easy")
+            self.configuration.modify_complexity('Easy')
             self.execute_change_algorithm_option('4')
             
         if (level_opts == "2"):
             # save Medium level 
-            #self.save_level("Medium")
+            self.configuration.modify_complexity('Medium')
             self.execute_change_algorithm_option('4')
             
         if (level_opts == "3"):
             # save Hard level
-            #self.save_level("Hard")
+            self.configuration.modify_complexity('Hard')
             self.execute_change_algorithm_option('4')
             
         if (level_opts == "4"):
@@ -134,15 +134,13 @@ class Main():
 
         if (chng_algorit == "1"):
             # save Norvig algorithm  
-            #self.save_algorithm("Norvig")
-            #self.display_main_menu()
+            #self.configuration.('Norvig')
             self.execute_change_algorithm_option('4')
             pass
 
         if (chng_algorit == "2"):
             # save Backtraking algorithm
-            #self.save_algorithm("Backtraking")
-            #self.display_main_menu()
+            #self.configuration.('Backtraking')
             self.execute_change_algorithm_option('4')
             pass
 
@@ -299,16 +297,6 @@ class Main():
             for key, value in dictionary.iteritems() :
                 if str(n) == key:
                     print key, value
-
-    def save_level(self, level_opts):
-        """ Saves the new value assigned for the complexity level on the config.xml file
-
-            Keyword arguments:
-            level_opts -- stores the complexity levels for the sudokus           
-        """ 
-
-        print level_opts
-        print self.configuration.modify_complexity(level_opts)
                          
 if __name__ == "__main__":
     t = Main()
