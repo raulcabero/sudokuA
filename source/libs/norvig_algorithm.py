@@ -35,9 +35,16 @@ class NorvigAlgorithm(Algorithm):
                      for s in self.squares)
         
         
-    def cross(self, A, B):
-        """Cross product of elements in A and elements in B."""
-        return [a+b for a in A for b in B]
+    def cross(self, element_a, element_b):
+        """Cross product of elements in element_a and elements in element_b.
+           
+           Keyword arguments:
+           element_a -- matrix of elements into sudoku
+           element_b -- matrix of elements into sudoku
+
+        """
+
+        return [a+b for a in element_a for b in element_b]
 
 
         ################ Search ################
