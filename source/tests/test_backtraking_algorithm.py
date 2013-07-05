@@ -4,8 +4,6 @@ sys.path.append( '../libs' )
 from backtraking_algorithm import BacktrakingAlgorithm
 
 class TestBacktrakingAlgorithm(unittest.TestCase):
-    def setUp(self):
-        pass
 
         ################ Test correct solution sudoku ################
 
