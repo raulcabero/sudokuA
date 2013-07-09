@@ -1,9 +1,11 @@
-import unittest
-import sys
-sys.path.append( '../libs' )
-from backtraking_algorithm import BacktrakingAlgorithm
+import unittest # pragma: no cover
+import sys # pragma: no cover
+sys.path.append( '../libs' ) # pragma: no cover
+from backtraking_algorithm import BacktrakingAlgorithm # pragma: no cover
 
-class TestBacktrakingAlgorithm(unittest.TestCase):
+class TestBacktrakingAlgorithm(unittest.TestCase): # pragma: no cover
+    def setUp(self):
+        pass
 
         ################ Test correct solution sudoku ################
 
@@ -334,6 +336,6 @@ class TestBacktrakingAlgorithm(unittest.TestCase):
                 
         self.assertTrue(sudoku_test_only_numbers.sudoku_data_is_valid())
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     unittest.main()
     

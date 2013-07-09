@@ -1,9 +1,9 @@
-import unittest
-import sys
-sys.path.append("../libs")
-from norvig_algorithm import NorvigAlgorithm
+import unittest # pragma: no cover
+import sys # pragma: no cover
+sys.path.append("../libs") # pragma: no cover
+from norvig_algorithm import NorvigAlgorithm # pragma: no cover
 
-class TestNorvigAlgorithm(unittest.TestCase):
+class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
     def setUp(self):
 
         # Test algorithm Norvig attributes
@@ -80,8 +80,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'B2': '6', 'B3': '7', 'D6': '2', 'D7': '9',
                                                 'D4': '1', 'D5': '3', 'B8': '2', 'B9': '1',
                                                 'D1': '5'}
-
-                self.assertEquals(sudoku_test_easy_01.solve_sudoku(),
+                sudoku_test_easy_01.solve_sudoku()
+                self.assertEquals(sudoku_test_easy_01.solution_norvig,
                                   sudoku_test_easy_01_solution)
         
     
@@ -118,7 +118,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '1', 'D5': '2', 'B8': '8', 'B9': '4',
                                                 'D1': '9'}
 
-                self.assertEquals(sudoku_test_easy_02.solve_sudoku(),
+                sudoku_test_easy_02.solve_sudoku()
+                self.assertEquals(sudoku_test_easy_02.solution_norvig,
                                   sudoku_test_easy_02_solution)
 
     def test_solution_sudoku_easy_03(self):
@@ -154,7 +155,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '9', 'D5': '8', 'B8': '8', 'B9': '3',
                                                 'D1': '1'}
 
-                self.assertEquals(sudoku_test_easy_03.solve_sudoku(),
+                sudoku_test_easy_03.solve_sudoku()
+                self.assertEquals(sudoku_test_easy_03.solution_norvig,
                                   sudoku_test_easy_03_solution)
 
     def test_solution_sudoku_easy_04(self):
@@ -189,7 +191,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '5', 'D5': '4', 'B8': '6', 'B9': '7',
                                                 'D1': '6'}
 
-                self.assertEquals(sudoku_test_easy_04.solve_sudoku(),
+                sudoku_test_easy_04.solve_sudoku() 
+                self.assertEquals(sudoku_test_easy_04.solution_norvig,
                                   sudoku_test_easy_04_solution)
 
     def test_solution_sudoku_easy_05(self):
@@ -225,7 +228,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '1', 'D5': '4', 'B8': '2', 'B9': '6',
                                                 'D1': '2'}
 
-                self.assertEquals(sudoku_test_easy_05.solve_sudoku(),
+                sudoku_test_easy_05.solve_sudoku()
+                self.assertEquals(sudoku_test_easy_05.solution_norvig,
                                   sudoku_test_easy_05_solution)
 
     def test_solution_sudoku_easy_06(self):
@@ -261,7 +265,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '3', 'D5': '4', 'D2': '5', 'D3': '7',
                                                 'D1': '9'}
 
-                self.assertEquals(sudoku_test_easy_06.solve_sudoku(),
+                sudoku_test_easy_06.solve_sudoku()
+                self.assertEquals(sudoku_test_easy_06.solution_norvig,
                                   sudoku_test_easy_06_solution)
 
     def test_solution_sudoku_easy_07(self):
@@ -297,7 +302,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '3', 'D5': '5', 'D2': '6', 'D3': '2',
                                                 'D1': '9'}
 
-                self.assertEquals(sudoku_test_easy_07.solve_sudoku(),
+                sudoku_test_easy_07.solve_sudoku() 
+                self.assertEquals(sudoku_test_easy_07.solution_norvig,
                                   sudoku_test_easy_07_solution)
 
 
@@ -334,7 +340,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '5', 'D5': '1', 'B8': '5', 'B9': '1',
                                                 'D1': '8'}
 
-                self.assertEquals(sudoku_test_easy_08.solve_sudoku(),
+                sudoku_test_easy_08.solve_sudoku()
+                self.assertEquals(sudoku_test_easy_08.solution_norvig,
                                   sudoku_test_easy_08_solution)
 
     def test_solution_sudoku_easy_09(self):
@@ -370,7 +377,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '2', 'D5': '6', 'B8': '7', 'B9': '8',
                                                 'D1': '9'}
 
-                self.assertEquals(sudoku_test_easy_09.solve_sudoku(),
+                sudoku_test_easy_09.solve_sudoku()
+                self.assertEquals(sudoku_test_easy_09.solution_norvig,
                                   sudoku_test_easy_09_solution)
 
     def test_solution_sudoku_easy_10(self):
@@ -406,7 +414,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '4', 'D5': '6', 'D2': '5', 'D3': '7',
                                                 'D1': '3'}
 
-                self.assertEquals(sudoku_test_easy_10.solve_sudoku(),
+                sudoku_test_easy_10.solve_sudoku()
+                self.assertEquals(sudoku_test_easy_10.solution_norvig,
                                   sudoku_test_easy_10_solution)
                 
     ################ Test to verify the solution hard sudokus ################
@@ -444,7 +453,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '4', 'D5': '3', 'D2': '2', 'D3': '5',
                                                 'D1': '8'}
                 
-                self.assertEquals(sudoku_test_hard_01.solve_sudoku(),
+                sudoku_test_hard_01.solve_sudoku()
+                self.assertEquals(sudoku_test_hard_01.solution_norvig,
                                   sudoku_test_hard_01_solution)
 
     def test_solution_sudoku_hard_02(self):
@@ -480,7 +490,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '4', 'D5': '5', 'D2': '7', 'D3': '2',
                                                 'D1': '1'}
                 
-                self.assertEquals(sudoku_test_hard_02.solve_sudoku(),
+                sudoku_test_hard_02.solve_sudoku()
+                self.assertEquals(sudoku_test_hard_02.solution_norvig,
                                   sudoku_test_hard_02_solution)
 
     def test_solution_sudoku_hard_03(self):
@@ -516,7 +527,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '5', 'D5': '6', 'D2': '8', 'D3': '2',
                                                 'D1': '9'}
                 
-                self.assertEquals(sudoku_test_hard_03.solve_sudoku(),
+                sudoku_test_hard_03.solve_sudoku()
+                self.assertEquals(sudoku_test_hard_03.solution_norvig,
                                   sudoku_test_hard_03_solution)
 
     def test_solution_sudoku_hard_04(self):
@@ -552,7 +564,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '8', 'D5': '4', 'D2': '3', 'D3': '5',
                                                 'D1': '7'}
                 
-                self.assertEquals(sudoku_test_hard_04.solve_sudoku(),
+                sudoku_test_hard_04.solve_sudoku()
+                self.assertEquals(sudoku_test_hard_04.solution_norvig,
                                   sudoku_test_hard_04_solution)
 
 
@@ -589,7 +602,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '9', 'D5': '6', 'D2': '4', 'D3': '7',
                                                 'D1': '8'}
                 
-                self.assertEquals(sudoku_test_hard_05.solve_sudoku(),
+                sudoku_test_hard_05.solve_sudoku()
+                self.assertEquals(sudoku_test_hard_05.solution_norvig,
                                   sudoku_test_hard_05_solution)
 
     def test_solution_sudoku_hard_06(self):
@@ -625,7 +639,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '2', 'D5': '9', 'D2': '7', 'D3': '1',
                                                 'D1': '5'}
                 
-                self.assertEquals(sudoku_test_hard_06.solve_sudoku(),
+                sudoku_test_hard_06.solve_sudoku()
+                self.assertEquals(sudoku_test_hard_06.solution_norvig,
                                   sudoku_test_hard_06_solution)
 
 
@@ -662,7 +677,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '5', 'D5': '2', 'D2': '3', 'D3': '7',
                                                 'D1': '4'}
                 
-                self.assertEquals(sudoku_test_hard_07.solve_sudoku(),
+                sudoku_test_hard_07.solve_sudoku()
+                self.assertEquals(sudoku_test_hard_07.solution_norvig,
                                   sudoku_test_hard_07_solution)
 
 
@@ -699,7 +715,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '8', 'D5': '1', 'D2': '6', 'D3': '7',
                                                 'D1': '4'}
                 
-                self.assertEquals(sudoku_test_hard_08.solve_sudoku(),
+                sudoku_test_hard_08.solve_sudoku() 
+                self.assertEquals(sudoku_test_hard_08.solution_norvig,
                                   sudoku_test_hard_08_solution)
 
 
@@ -736,7 +753,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '5', 'D5': '2', 'D2': '3', 'D3': '7',
                                                 'D1': '4'}
                 
-                self.assertEquals(sudoku_test_hard_09.solve_sudoku(),
+                sudoku_test_hard_09.solve_sudoku()
+                self.assertEquals(sudoku_test_hard_09.solution_norvig,
                                   sudoku_test_hard_09_solution)
 
     def test_solution_sudoku_hard_10(self):
@@ -772,7 +790,8 @@ class TestNorvigAlgorithm(unittest.TestCase):
                                                 'D4': '6', 'D5': '4', 'D2': '5', 'D3': '7',
                                                 'D1': '1'}
                 
-                self.assertEquals(sudoku_test_hard_10.solve_sudoku(),
+                sudoku_test_hard_10.solve_sudoku()
+                self.assertEquals(sudoku_test_hard_10.solution_norvig,
                                   sudoku_test_hard_10_solution)
 
     ################ Test validation correct format sudoku data ################
@@ -890,5 +909,5 @@ class TestNorvigAlgorithm(unittest.TestCase):
 %%%9%%%%%""", "%")
                 
                 self.assertTrue(sudoku_test_only_numbers.sudoku_data_is_valid())
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     unittest.main()
