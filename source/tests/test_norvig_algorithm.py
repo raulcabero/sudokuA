@@ -1,21 +1,21 @@
-import unittest # pragma: no cover
-import sys # pragma: no cover
-sys.path.append("../libs") # pragma: no cover
-from norvig_algorithm import NorvigAlgorithm # pragma: no cover
+import unittest 
+import sys 
+sys.path.append("../libs") 
+from norvig_algorithm import NorvigAlgorithm 
 
-class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
+class TestNorvigAlgorithm(unittest.TestCase): 
     def setUp(self):
 
         # Test algorithm Norvig attributes
-        sudoku_test_values = """003020600
-900305001
-001806400
-008102900
-700000008
-006708200
-002609500
-800203009
-005010300"""
+        sudoku_test_values = "003020600\n" + \
+                             "900305001\n" + \
+                             "001806400\n" + \
+                             "008102900\n" + \
+                             "700000008\n" + \
+                             "006708200\n" + \
+                             "002609500\n" + \
+                             "800203009\n" + \
+                             "005010300\n"
         self.sudoku_test_attributes = NorvigAlgorithm(sudoku_test_values, "0")
         self.len_squares = 81
         self.len_unitlist = 27
@@ -50,15 +50,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
     ################ Test to verify the solution easy sudokus ################
 
     def test_solution_sudoku_easy_01(self):
-                sudoku_test_easy_01  = NorvigAlgorithm("""003020600
-900305001
-001806400
-008102900
-700000008
-006708200
-002609500
-800203009
-005010300""", "0")
+                sudoku_test_easy_01  = NorvigAlgorithm("003020600\n" + \
+                                                       "900305001\n" + \
+                                                       "001806400\n" + \
+                                                       "008102900\n" + \
+                                                       "700000008\n" + \
+                                                       "006708200\n" + \
+                                                       "002609500\n" + \
+                                                       "800203009\n" + \
+                                                       "005010300\n", "0")
                 sudoku_test_easy_01_solution = {'I6': '7', 'H9': '9', 'I2': '9', 'E8': '3',
                                                 'H3': '4', 'H7': '7', 'I7': '3', 'I4': '4',
                                                 'H5': '5', 'F9': '5', 'G7': '5', 'G6': '9',
@@ -86,15 +86,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
         
     
     def test_solution_sudoku_easy_02(self):
-                sudoku_test_easy_02  = NorvigAlgorithm("""200080300
-060070084
-030500209
-000105408
-000000000
-402706000
-301007040
-720040060
-004010003""", "0")
+                sudoku_test_easy_02  = NorvigAlgorithm("200080300\n" + \
+                                                       "060070084\n" + \
+                                                       "030500209\n" + \
+                                                       "000105408\n" + \
+                                                       "000000000\n" + \
+                                                       "402706000\n" + \
+                                                       "301007040\n" + \
+                                                       "720040060\n" + \
+                                                       "004010003\n", "0")
                 
                 sudoku_test_easy_02_solution = {'I6': '2', 'H9': '5', 'I2': '5', 'E8': '2',
                                                 'H3': '8', 'H7': '1', 'I7': '7', 'I4': '8',
@@ -123,15 +123,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_easy_02_solution)
 
     def test_solution_sudoku_easy_03(self):
-                sudoku_test_easy_03  = NorvigAlgorithm("""000000907
-000420180
-000705026
-100904000
-050000040
-000507009
-920108000
-034059000
-507000000""", "0")
+                sudoku_test_easy_03  = NorvigAlgorithm("000000907\n" + \
+                                                       "000420180\n" + \
+                                                       "000705026\n" + \
+                                                       "100904000\n" + \
+                                                       "050000040\n" + \
+                                                       "000507009\n" + \
+                                                       "920108000\n" + \
+                                                       "034059000\n" + \
+                                                       "507000000\n", "0")
 
                 sudoku_test_easy_03_solution = {'I6': '3', 'H9': '1', 'I2': '1', 'E8': '4',
                                                 'H3': '4', 'H7': '6', 'I7': '8', 'I4': '6',
@@ -160,15 +160,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_easy_03_solution)
 
     def test_solution_sudoku_easy_04(self):
-                sudoku_test_easy_04  = NorvigAlgorithm("""030050040
-008010500
-460000012
-070502080
-000603000
-040109030
-250000098
-001020600
-080060020""", "0")
+                sudoku_test_easy_04  = NorvigAlgorithm("030050040\n" + \
+                                                       "008010500\n" + \
+                                                       "460000012\n" + \
+                                                       "070502080\n" + \
+                                                       "000603000\n" + \
+                                                       "040109030\n" + \
+                                                       "250000098\n" + \
+                                                       "001020600\n" + \
+                                                       "080060020\n", "0")
                 sudoku_test_easy_04_solution = {'I6': '5', 'H9': '5', 'I2': '8', 'E8': '5',
                                                 'H3': '1', 'H7': '6', 'I7': '1', 'I4': '9',
                                                 'H5': '2', 'F9': '6', 'G7': '4', 'G6': '1',
@@ -196,15 +196,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_easy_04_solution)
 
     def test_solution_sudoku_easy_05(self):
-                sudoku_test_easy_05  = NorvigAlgorithm("""020810740
-700003100
-090002805
-009040087
-400208003
-160030200
-302700060
-005600008
-076051090""", "0")
+                sudoku_test_easy_05  = NorvigAlgorithm("020810740\n" + \
+                                                       "700003100\n" + \
+                                                       "090002805\n" + \
+                                                       "009040087\n" + \
+                                                       "400208003\n" + \
+                                                       "160030200\n" + \
+                                                       "302700060\n" + \
+                                                       "005600008\n" + \
+                                                       "076051090\n", "0")
 
                 sudoku_test_easy_05_solution = {'I6': '1', 'H9': '8', 'I2': '7', 'E8': '1',
                                                 'H3': '5', 'H7': '3', 'I7': '4', 'I4': '3',
@@ -233,15 +233,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_easy_05_solution)
 
     def test_solution_sudoku_easy_06(self):
-                sudoku_test_easy_06  = NorvigAlgorithm("""100920000
-524010000
-000000070
-050008102
-000000000
-402700090
-060000000
-000030945
-000071006""", "0")
+                sudoku_test_easy_06  = NorvigAlgorithm("100920000\n" + \
+                                                       "524010000\n" + \
+                                                       "000000070\n" + \
+                                                       "050008102\n" + \
+                                                       "000000000\n" + \
+                                                       "402700090\n" + \
+                                                       "060000000\n" + \
+                                                       "000030945\n" + \
+                                                       "000071006\n", "0")
 
                 sudoku_test_easy_06_solution = {'G7': '7', 'G6': '9', 'G5': '8', 'G4': '4',
                                                 'G3': '5', 'G2': '6', 'G1': '2', 'G9': '3',
@@ -270,15 +270,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_easy_06_solution)
 
     def test_solution_sudoku_easy_07(self):
-                sudoku_test_easy_07  = NorvigAlgorithm("""043080250
-600000000
-000001094
-900004070
-000608000
-010200003
-820500000
-000000005
-034090710""", "0")
+                sudoku_test_easy_07  = NorvigAlgorithm("043080250\n" + \
+                                                       "600000000\n" + \
+                                                       "000001094\n" + \
+                                                       "900004070\n" + \
+                                                       "000608000\n" + \
+                                                       "010200003\n" + \
+                                                       "820500000\n" + \
+                                                       "000000005\n" + \
+                                                       "034090710\n", "0")
 
                 sudoku_test_easy_07_solution = {'G7': '4', 'G6': '7', 'G5': '6', 'G4': '5',
                                                 'G3': '1', 'G2': '2', 'G1': '8', 'G9': '9',
@@ -308,15 +308,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
 
 
     def test_solution_sudoku_easy_08(self):
-                sudoku_test_easy_08  = NorvigAlgorithm("""480006902
-002008001
-900370060
-840010200
-003704100
-001060049
-020085007
-700900600
-609200018""", "0")
+                sudoku_test_easy_08  = NorvigAlgorithm("480006902\n" + \
+                                                       "002008001\n" + \
+                                                       "900370060\n" + \
+                                                       "840010200\n" + \
+                                                       "003704100\n" + \
+                                                       "001060049\n" + \
+                                                       "020085007\n" + \
+                                                       "700900600\n" + \
+                                                       "609200018\n", "0")
                 
                 sudoku_test_easy_08_solution = {'I6': '7', 'H9': '5', 'I2': '5', 'E8': '8',
                                                 'H3': '8', 'H7': '6', 'I7': '4', 'I4': '2',
@@ -345,15 +345,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_easy_08_solution)
 
     def test_solution_sudoku_easy_09(self):
-                sudoku_test_easy_09  = NorvigAlgorithm("""000900002
-050123400
-030000160
-908000000
-070000090
-000000205
-091000050
-007439020
-400007000""", "0")
+                sudoku_test_easy_09  = NorvigAlgorithm("000900002\n" + \
+                                                       "050123400\n" + \
+                                                       "030000160\n" + \
+                                                       "908000000\n" + \
+                                                       "070000090\n" + \
+                                                       "000000205\n" + \
+                                                       "091000050\n" + \
+                                                       "007439020\n" + \
+                                                       "400007000\n", "0")
 
                 sudoku_test_easy_09_solution = {'I6': '7', 'H9': '1', 'I2': '2', 'E8': '9',
                                                 'H3': '7', 'H7': '6', 'I7': '9', 'I4': '5',
@@ -382,15 +382,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_easy_09_solution)
 
     def test_solution_sudoku_easy_10(self):
-                sudoku_test_easy_10  = NorvigAlgorithm("""001900003
-900700160
-030005007
-050000009
-004302600
-200000070
-600100030
-042007006
-500006800""", "0")
+                sudoku_test_easy_10  = NorvigAlgorithm("001900003\n" + \
+                                                       "900700160\n" + \
+                                                       "030005007\n" + \
+                                                       "050000009\n" + \
+                                                       "004302600\n" + \
+                                                       "200000070\n" + \
+                                                       "600100030\n" + \
+                                                       "042007006\n" + \
+                                                       "500006800\n", "0")
                 
                 sudoku_test_easy_10_solution = {'G7': '7', 'G6': '4', 'G5': '5', 'G4': '1',
                                                 'G3': '9', 'G2': '8', 'G1': '6', 'G9': '2',
@@ -421,15 +421,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
     ################ Test to verify the solution hard sudokus ################
                 
     def test_solution_sudoku_hard_01(self):
-                sudoku_test_hard_01  = NorvigAlgorithm("""400000805
-030000000
-000700000
-020000060
-000080400
-000010000
-000603070
-500200000
-104000000""", "0")
+                sudoku_test_hard_01  = NorvigAlgorithm("400000805\n" + \
+                                                       "030000000\n" + \
+                                                       "000700000\n" + \
+                                                       "020000060\n" + \
+                                                       "000080400\n" + \
+                                                       "000010000\n" + \
+                                                       "000603070\n" + \
+                                                       "500200000\n" + \
+                                                       "104000000\n", "0")
                 
                 sudoku_test_hard_01_solution = {'G7': '5', 'G6': '3', 'G5': '4', 'G4': '6',
                                                 'G3': '9', 'G2': '8', 'G1': '2', 'G9': '1',
@@ -458,15 +458,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_hard_01_solution)
 
     def test_solution_sudoku_hard_02(self):
-                sudoku_test_hard_02  = NorvigAlgorithm("""520006000
-000000701
-300000000
-000400800
-600000050
-000000000
-041800000
-000030020
-008700000""", "0")
+                sudoku_test_hard_02  = NorvigAlgorithm("520006000\n" + \
+                                                       "000000701\n" + \
+                                                       "300000000\n" + \
+                                                       "000400800\n" + \
+                                                       "600000050\n" + \
+                                                       "000000000\n" + \
+                                                       "041800000\n" + \
+                                                       "000030020\n" + \
+                                                       "008700000\n", "0")
 
                 sudoku_test_hard_02_solution = {'G7': '6', 'G6': '5', 'G5': '2', 'G4': '8',
                                                 'G3': '1', 'G2': '4', 'G1': '9', 'G9': '3',
@@ -495,15 +495,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_hard_02_solution)
 
     def test_solution_sudoku_hard_03(self):
-                sudoku_test_hard_03  = NorvigAlgorithm("""600000803
-040700000
-000000000
-000504070
-300200000
-106000000
-020000050
-000080600
-000010000""", "0")
+                sudoku_test_hard_03  = NorvigAlgorithm("600000803\n" + \
+                                                       "040700000\n" + \
+                                                       "000000000\n" + \
+                                                       "000504070\n" + \
+                                                       "300200000\n" + \
+                                                       "106000000\n" + \
+                                                       "020000050\n" + \
+                                                       "000080600\n" + \
+                                                       "000010000\n", "0")
 
                 sudoku_test_hard_03_solution = {'G7': '1', 'G6': '7', 'G5': '4', 'G4': '6',
                                                 'G3': '3', 'G2': '2', 'G1': '8', 'G9': '9',
@@ -532,15 +532,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_hard_03_solution)
 
     def test_solution_sudoku_hard_04(self):
-                sudoku_test_hard_04  = NorvigAlgorithm("""480300000
-000000071
-020000000
-705000060
-000200800
-000000000
-001076000
-300000400
-000050000""", "0")
+                sudoku_test_hard_04  = NorvigAlgorithm("480300000\n" + \
+                                                       "000000071\n" + \
+                                                       "020000000\n" + \
+                                                       "705000060\n" + \
+                                                       "000200800\n" + \
+                                                       "000000000\n" + \
+                                                       "001076000\n" + \
+                                                       "300000400\n" + \
+                                                       "000050000\n", "0")
                 
                 sudoku_test_hard_04_solution = {'G7': '9', 'G6': '6', 'G5': '7', 'G4': '4',
                                                 'G3': '1', 'G2': '5', 'G1': '8', 'G9': '3',
@@ -570,15 +570,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
 
 
     def test_solution_sudoku_hard_05(self):
-                sudoku_test_hard_05  = NorvigAlgorithm("""000014000
-030000200
-070000000
-000900030
-601000000
-000000080
-200000104
-000050600
-000708000""", "0")
+                sudoku_test_hard_05  = NorvigAlgorithm("000014000\n" + \
+                                                       "030000200\n" + \
+                                                       "070000000\n" + \
+                                                       "000900030\n" + \
+                                                       "601000000\n" + \
+                                                       "000000080\n" + \
+                                                       "200000104\n" + \
+                                                       "000050600\n" + \
+                                                       "000708000\n", "0")
 
                 sudoku_test_hard_05_solution = {'G7': '1', 'G6': '9', 'G5': '3', 'G4': '6',
                                                 'G3': '5', 'G2': '8', 'G1': '2', 'G9': '4',
@@ -607,15 +607,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_hard_05_solution)
 
     def test_solution_sudoku_hard_06(self):
-                sudoku_test_hard_06  = NorvigAlgorithm("""000000520
-080400000
-030009000
-501000600
-200700000
-000300000
-600010000
-000000704
-000000030""", "0")
+                sudoku_test_hard_06  = NorvigAlgorithm("000000520\n" + \
+                                                       "080400000\n" + \
+                                                       "030009000\n" + \
+                                                       "501000600\n" + \
+                                                       "200700000\n" + \
+                                                       "000300000\n" + \
+                                                       "600010000\n" + \
+                                                       "000000704\n" + \
+                                                       "000000030\n", "0")
                
                 sudoku_test_hard_06_solution = {'G7': '8', 'G6': '3', 'G5': '1', 'G4': '9',
                                                 'G3': '7', 'G2': '4', 'G1': '6', 'G9': '2',
@@ -645,15 +645,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
 
 
     def test_solution_sudoku_hard_07(self):
-                sudoku_test_hard_07  = NorvigAlgorithm("""602050000
-000003040
-000000000
-430008000
-010000200
-000000700
-500270000
-000000081
-000600000""", "0")
+                sudoku_test_hard_07  = NorvigAlgorithm("602050000\n" + \
+                                                       "000003040\n" + \
+                                                       "000000000\n" + \
+                                                       "430008000\n" + \
+                                                       "010000200\n" + \
+                                                       "000000700\n" + \
+                                                       "500270000\n" + \
+                                                       "000000081\n" + \
+                                                       "000600000\n", "0")
                 
                 sudoku_test_hard_07_solution = {'G7': '4', 'G6': '1', 'G5': '7', 'G4': '2',
                                                 'G3': '8', 'G2': '6', 'G1': '5', 'G9': '3',
@@ -683,15 +683,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
 
 
     def test_solution_sudoku_hard_08(self):
-                sudoku_test_hard_08  = NorvigAlgorithm("""052400000
-000070100
-000000000
-000802000
-300000600
-090500000
-106030000
-000000089
-700000000""", "0")
+                sudoku_test_hard_08  = NorvigAlgorithm("052400000\n" + \
+                                                       "000070100\n" + \
+                                                       "000000000\n" + \
+                                                       "000802000\n" + \
+                                                       "300000600\n" + \
+                                                       "090500000\n" + \
+                                                       "106030000\n" + \
+                                                       "000000089\n" + \
+                                                       "700000000\n", "0")
                 
                 sudoku_test_hard_08_solution = {'G7': '2', 'G6': '7', 'G5': '3', 'G4': '9',
                                                 'G3': '6', 'G2': '8', 'G1': '1', 'G9': '5',
@@ -721,15 +721,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
 
 
     def test_solution_sudoku_hard_09(self):
-                sudoku_test_hard_09  = NorvigAlgorithm("""602050000
-000004030
-000000000
-430008000
-010000200
-000000700
-500270000
-000000081
-000600000""", "0")
+                sudoku_test_hard_09  = NorvigAlgorithm("602050000\n" + \
+                                                       "000004030\n" + \
+                                                       "000000000\n" + \
+                                                       "430008000\n" + \
+                                                       "010000200\n" + \
+                                                       "000000700\n" + \
+                                                       "500270000\n" + \
+                                                       "000000081\n" + \
+                                                       "000600000\n", "0")
                 
                 sudoku_test_hard_09_solution = {'G7': '3', 'G6': '1', 'G5': '7', 'G4': '2',
                                                 'G3': '8', 'G2': '6', 'G1': '5', 'G9': '4',
@@ -758,15 +758,15 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
                                   sudoku_test_hard_09_solution)
 
     def test_solution_sudoku_hard_10(self):
-                sudoku_test_hard_10  = NorvigAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000065
-800000000
-060502000
-400000700
-000900000""", "0")
+                sudoku_test_hard_10  = NorvigAlgorithm("092300000\n" + \
+                                                       "000080100\n" + \
+                                                       "000000000\n" + \
+                                                       "107040000\n" + \
+                                                       "000000065\n" + \
+                                                       "800000000\n" + \
+                                                       "060502000\n" + \
+                                                       "400000700\n" + \
+                                                       "000900000\n", "0")
                 
                 sudoku_test_hard_10_solution = {'G7': '9', 'G6': '2', 'G5': '7', 'G4': '5',
                                                 'G3': '8', 'G2': '6', 'G1': '3', 'G9': '4',
@@ -797,117 +797,117 @@ class TestNorvigAlgorithm(unittest.TestCase): # pragma: no cover
     ################ Test validation correct format sudoku data ################
                 
     def test_soduku_to_solve_only_contains_numbers(self):
-                sudoku_test_only_numbers  = NorvigAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000065
-800000000
-060502000
-400000700
-000900000""", "0")
+                sudoku_test_only_numbers  = NorvigAlgorithm("092300000\n" + \
+                                                            "000080100\n" + \
+                                                            "000000000\n" + \
+                                                            "107040000\n" + \
+                                                            "000000065\n" + \
+                                                            "800000000\n" + \
+                                                            "060502000\n" + \
+                                                            "400000700\n" + \
+                                                            "000900000\n", "0")
                 
                 self.assertTrue(sudoku_test_only_numbers.sudoku_data_is_valid())
 
     def test_soduku_to_solve_cannot_contain_letters(self):
-                sudoku_test_only_numbers  = NorvigAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000A65
-800000000
-060502000
-400000C00
-000900000""", "0")
+                sudoku_test_only_numbers  = NorvigAlgorithm("092300000\n" + \
+                                                            "000080100\n" + \
+                                                            "000000000\n" + \
+                                                            "107040000\n" + \
+                                                            "000000A65\n" + \
+                                                            "800000000\n" + \
+                                                            "060502000\n" + \
+                                                            "400000C00\n" + \
+                                                            "000900000\n", "0")
                 
                 self.assertFalse(sudoku_test_only_numbers.sudoku_data_is_valid())
 
     def test_soduku_to_solve_cannot_contain_dot_as_empty_value_if_the_empty_value_is_zero(self):
-                sudoku_test_only_numbers  = NorvigAlgorithm("""092300000
-....80100
-...000000
-107040000
-..0..0465
-800000000
-060502000
-400000200
-000900000""", "0")
+                sudoku_test_only_numbers  = NorvigAlgorithm("092300000\n" + \
+                                                            "....80100\n" + \
+                                                            "...000000\n" + \
+                                                            "107040000\n" + \
+                                                            "..0..0465\n" + \
+                                                            "800000000\n" + \
+                                                            "060502000\n" + \
+                                                            "400000200\n" + \
+                                                            "000900000\n", "0")
                 
                 self.assertFalse(sudoku_test_only_numbers.sudoku_data_is_valid())
 
     def test_soduku_to_solve_not_contain_spaces_as_empty_value_if_the_empty_value_is_zero(self):
-                sudoku_test_only_numbers  = NorvigAlgorithm(""" 923    
-    8 1  
-      1
-1 7 4
-      465
-8        
- 6 5 2   
-4     2  
-   9      """, "0")
+                sudoku_test_only_numbers  = NorvigAlgorithm(" 923     \n" + \
+                                                            "    8 1  \n" + \
+                                                            "      1  \n" + \
+                                                            "1 7 4    \n" + \
+                                                            "      465\n" + \
+                                                            "8        \n" + \
+                                                            " 6 5 2   \n" + \
+                                                            "4     2  \n" + \
+                                                            "   9     \n" , "0")
                 
                 self.assertFalse(sudoku_test_only_numbers.sudoku_data_is_valid())
 
     def test_soduku_to_solve_is_valid_when_contains_81_numbers(self):
-                sudoku_test_only_numbers  = NorvigAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000065
-800000000
-060502000
-400000700
-000900000""", "0")
+                sudoku_test_only_numbers  = NorvigAlgorithm("092300000\n" + \
+                                                            "000080100\n" + \
+                                                            "000000000\n" + \
+                                                            "107040000\n" + \
+                                                            "000000065\n" + \
+                                                            "800000000\n" + \
+                                                            "060502000\n" + \
+                                                            "400000700\n" + \
+                                                            "000900000\n", "0")
                 
                 self.assertTrue(sudoku_test_only_numbers.sudoku_data_is_valid())
 
 
     def test_soduku_to_solve_is_invalid_when_contains_less_than_81_numbers(self):
-                sudoku_test_only_numbers  = NorvigAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000065
-800000000
-060502000""", "0")
+                sudoku_test_only_numbers  = NorvigAlgorithm("092300000\n" + \
+                                                            "000080100\n" + \
+                                                            "000000000\n" + \
+                                                            "107040000\n" + \
+                                                            "000000065\n" + \
+                                                            "800000000\n" + \
+                                                            "060502000\n", "0")
                 
                 self.assertFalse(sudoku_test_only_numbers.sudoku_data_is_valid())
 
     def test_soduku_to_solve_is_invalid_when_contains_more_than_81_numbers(self):
-                sudoku_test_only_numbers  = NorvigAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000065
-800000000
-060502000
-400000700
-000900000
-000000065
-060502000""", "0")
+                sudoku_test_only_numbers  = NorvigAlgorithm("092300000\n" + \
+                                                            "000080100\n" + \
+                                                            "000000000\n" + \
+                                                            "107040000\n" + \
+                                                            "000000065\n" + \
+                                                            "800000000\n" + \
+                                                            "060502000\n" + \
+                                                            "400000700\n" + \
+                                                            "000900000\n" + \
+                                                            "000000065\n" + \
+                                                            "060502000\n", "0")
 
     def test_soduku_to_solve_is_valid_when_characters_to_replace_are_dot(self):
-                sudoku_test_only_numbers  = NorvigAlgorithm(""".923.....
-....8.1..
-.........
-1.7.4....
-.......65
-8........
-.6.5.2...
-4.....7..
-...9.....""", ".")
+                sudoku_test_only_numbers  = NorvigAlgorithm(".923.....\n" + \
+                                                            "....8.1..\n" + \
+                                                            ".........\n" + \
+                                                            "1.7.4....\n" + \
+                                                            ".......65\n" + \
+                                                            "8........\n" + \
+                                                            ".6.5.2...\n" + \
+                                                            "4.....7..\n" + \
+                                                            "...9.....\n", ".")
 
     def test_soduku_to_solve_is_valid_when_characters_to_replace_are_porcentage(self):
-                sudoku_test_only_numbers  = NorvigAlgorithm("""%923%%%%%
-%%%%8%1%%
-%%%%%%%%%
-1%7%4%%%%
-%%%%%%%65
-8%%%%%%%%
-%6%5%2%%%
-4%%%%%7%%
-%%%9%%%%%""", "%")
+                sudoku_test_only_numbers  = NorvigAlgorithm("%923%%%%%\n" + \
+                                                            "%%%%8%1%%\n" + \
+                                                            "%%%%%%%%%\n" + \
+                                                            "1%7%4%%%%\n" + \
+                                                            "%%%%%%%65\n" + \
+                                                            "8%%%%%%%%\n" + \
+                                                            "%6%5%2%%%\n" + \
+                                                            "4%%%%%7%%\n" + \
+                                                            "%%%9%%%%%\n", "%")
                 
                 self.assertTrue(sudoku_test_only_numbers.sudoku_data_is_valid())
-if __name__ == "__main__": # pragma: no cover
+if __name__ == "__main__":
     unittest.main()

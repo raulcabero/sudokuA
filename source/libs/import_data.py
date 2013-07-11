@@ -23,13 +23,13 @@ class ImportData:
                        sudoku data
 
         """
-        root, ext = self.guess_extension(sudoku_file)
-        res = []
+        ext = self.guess_extension(sudoku_file)
+        matrix_sudoku = []
         if ext == self.extension_file_csv:
-            res = self.csv_handler.get_rows_sudoku_data(sudoku_file, ",")
-        if len(res) > 0:
-            if res[0][1] != -1:
-                return res
+            matrix_sudoku = self.csv_handler.get_rows_sudoku_data(sudoku_file, ",")
+        if len(matrix_sudoku) > 0:
+            if matrix_sudoku[0][1] != -1:
+                return matrix_sudoku
             else:
                 return False
         else:
@@ -44,9 +44,9 @@ class ImportData:
 
         """
         double_extensions = ['tar.gz', 'tar.bz2']
-        root,ext = os.path.splitext(filename)
+        root , ext = os.path.splitext(filename)
         if any([filename.endswith(x) for x in double_extensions]):
             root, first_ext = os.path.splitext(root)
             ext = first_ext + ext
-        return root, ext
+        return ext
 

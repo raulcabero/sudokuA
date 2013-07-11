@@ -2,31 +2,31 @@ import csv
 
 class CSVImport:
 
-    def get_rows_sudoku_data(self,file_sudoku,delimeter):
+    def get_rows_sudoku_data(self, file_path, delimeter):
         """
         Read the sudoku data form a csv file
         Returns a matrix[][] which contain all the sudoku
         data into the csv file and their size
 
         Keyword arguments:
-        sudoku_file -- the path of the file which contains the
-                       sudoku data
+        file_path -- the path of the file which contains the
+                     sudoku data
         delimeter -- the separator for data in the csv file               
 
         """
         
-        res = []
+        sudoku_data_from_csv = []
         try:
-            with open(file_sudoku, 'rb') as csvfile:
-                spamreader = csv.reader(csvfile, delimiter=delimeter, quotechar='|')
-                for row in spamreader:
-                    res.append(row)
-            res = self.get_sudoku_raws_data_from_csv_rows(res)
+            csvfile = open(file_path, 'rb')
+            spam_reader = csv.reader(csvfile, delimiter=delimeter, quotechar='|')
+            for row in spam_reader:
+                sudoku_data_from_csv.append(row)
+            sudoku_data_from_csv = self.get_sudoku_raws_data_from_csv_rows(sudoku_data_from_csv)
         except Exception:
-            res = []
-        return res
+            sudoku_data_from_csv = []
+        return sudoku_data_from_csv
 
-    def get_sudoku_raws_data_from_csv_rows(self,csv_rows):
+    def get_sudoku_raws_data_from_csv_rows(self, csv_rows):
         """
         Given the rows form the csv file it converts the
         each row in a valid row entry for the sudoku solver
@@ -34,30 +34,35 @@ class CSVImport:
         in each row and their size of the sudoku
 
         Keyword arguments:
-        csv_rows -- the rows into a csv file         
+        csv_rows -- the rows into a csv file, each row in the csv file
+                    represents a complete sudoku data to solve
+                    
         """
         
-        res = []
+        matrix_sudoku = []
         for row in csv_rows:
-            self.get_sudoku_raw_data(row)
-            res.append(self.get_sudoku_raw_data(row))
-        return res
+            matrix_sudoku.append(self.get_sudoku_raw_data(row))
+        return matrix_sudoku
         
 
-    def get_sudoku_raw_data(self,csv_sudoku):
+    def get_sudoku_raw_data(self, csv_sudoku):
         """
         Given a row form the csv file it converts the row
-        in a valid row entry for the sudoku solver
+        in a valid row entry for the sudoku solver.
+        Each row in the csv file represents a complete data for
+        a sudoku to solve
         Returns an array[] which contain the sudoku data
         in the row and the size of the sudoku
 
         Keyword arguments:
-        csv_sudoku -- A row of the csv file         
+        csv_sudoku -- A row of the csv file, it represents a complete
+                      sudoku data to solve  
+        
         """
-        res = ""
+        sudoku_row_data = ""
         size = -1
         for data in csv_sudoku:
-            res = res + data+"\n"
+            sudoku_row_data = sudoku_row_data + data + "\n"
             if size == -1:
                 size = len(data)
             elif size != len(data):
@@ -65,5 +70,7 @@ class CSVImport:
                 break
         if len(csv_sudoku) != size:
             size = -1
-        return res,size
-        
+        result = []
+        result.append(sudoku_row_data)
+        result.append(size)
+        return result
