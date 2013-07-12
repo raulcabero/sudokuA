@@ -16,7 +16,7 @@ class ExportSudoku:
         # handler to write to txt files
         self.txt_handler = TXTHandler()
 
-    def export_sudoku(self,sudoku_matrix,export_to, export_path, name_export):
+    def export_sudoku(self, sudoku_matrix, type_file, path, name_file):
         """
         Export the sudoku to a given export type such as txt file
         Return True if the sudoku was successfully exported otherwise
@@ -25,19 +25,20 @@ class ExportSudoku:
         Keyword arguments:
         sudoku_matrix -- the matrix which contains the sudoku data
                          to export
-        export_to -- the type where the file will be exported e.g txt
-        export_path -- the path where the sudoku will be exported
+        type_file -- the type where the file will be exported e.g txt
+        path -- the path where the sudoku will be exported
         name_export -- the name of the file where the sudoku will be
                        exported
 
         """
         sudoku_matrix = self.get_format_sudoku(sudoku_matrix)
         sudoku_exported = False
-        if export_to == self.export_to_cmd_line :
+        if type_file == self.export_to_cmd_line :
+            print sudoku_matrix
             sudoku_exported = True
-        if export_to == self.export_to_txt:
-            sudoku_exported = self.txt_handler.write_sudoku(export_path, \
-                              name_export, sudoku_matrix)
+        if type_file == self.export_to_txt:
+            sudoku_exported = self.txt_handler.write_sudoku(path,
+                              name_file, sudoku_matrix)
         return sudoku_exported
             
     def get_format_sudoku(self, sudoku_matrix):

@@ -30,8 +30,8 @@ class TestExportSudoku(unittest.TestCase):
                    " 5 2 8 | 9 3 4 | 1 6 7 \n"
      
         export_sudoku = ExportSudoku()
-        res = export_sudoku.get_format_sudoku(square)
-        self.assertEquals(res, expected)
+        line_to_export = export_sudoku.get_format_sudoku(square)
+        self.assertEquals(line_to_export, expected)
 
     def test_the_format_to_export_is_correct_empty_fields_dot(self):
 
@@ -58,8 +58,8 @@ class TestExportSudoku(unittest.TestCase):
                    " 5 2 8 | . . . | 1 6 . \n"
      
         export_sudoku = ExportSudoku()
-        res = export_sudoku.get_format_sudoku(square)
-        self.assertEquals(res, expected)
+        line_to_export = export_sudoku.get_format_sudoku(square)
+        self.assertEquals(line_to_export, expected)
 
     def test_export_sudoku_returns_false_when_no_valid_export_type(self):
         square = [['1', '.', '2', '5', '4', '9', '.', '.', '3'],
@@ -73,8 +73,8 @@ class TestExportSudoku(unittest.TestCase):
                   ['5', '2', '8', '.', '.', '.', '1', '6', '.']]
 
         export_sudoku = ExportSudoku()
-        res = export_sudoku.export_sudoku(square, "Outlook", "", "")
-        self.assertFalse(res)
+        line_to_export = export_sudoku.export_sudoku(square, "Outlook", "", "")
+        self.assertFalse(line_to_export)
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,5 +1,5 @@
 import os
-from csv_import import CSVImport
+from csv_handler import CSVHandler
 
 class ImportData:
     extension_file_csv = ".csv"
@@ -9,7 +9,7 @@ class ImportData:
         Contructor class Import Data class in charge to import sudokus
         data from different inputs such as csv or txt
         """
-        self.csv_handler = CSVImport()
+        self.csv_handler = CSVHandler()
     
     def read_sudoku_data_from_file(self, sudoku_file):
         """
@@ -30,10 +30,7 @@ class ImportData:
         if len(matrix_sudoku) > 0:
             if matrix_sudoku[0][1] != -1:
                 return matrix_sudoku
-            else:
-                return False
-        else:
-            return False
+        return matrix_sudoku
 
     def guess_extension(self, filename):
         """

@@ -4,21 +4,17 @@ from algorithm import Algorithm
 
 class BacktrakingAlgorithm(Algorithm):
     
-    def __init__(self, sudoku_to_solve, character):
+    def __init__(self, sudoku_to_solve, empty_spot_char):
         """Constructor BacktrakingAlgorithm which solve a sudoku using
            Algorithm Backtraking.
 
         Keyword arguments:
         sudoku_to_solve -- the string raw data of the sudoku to solve
-        character -- the string character which represents the place to need
+        empty_spot_char -- the string character which represents the place to need
                      filled in the sudoku
         
         """   
-        super(BacktrakingAlgorithm,self).__init__(sudoku_to_solve, character)
-        # the size of the sudoku to solve
-        self.size_sudoku = 9
-        # the possible digits that the sudoku will contain
-        self.digits   = '123456789'
+        super(BacktrakingAlgorithm, self).__init__(sudoku_to_solve, empty_spot_char)
         # a matrix[][] which contain the soduku to solve 
         self.grid = self.get_grid_values(sudoku_to_solve)
 
@@ -38,20 +34,7 @@ class BacktrakingAlgorithm(Algorithm):
         # stop the timing
         self.end_time = time.clock()
         return self.grid
-
-    def sudoku_data_is_valid(self):
-        """Verifies if the sudoku to solve contains the valid data
-            Return True if is valid False if a contradiction is found.
-            
-        """
-        chars = [c for c in self.sudoku_to_solve if c in self.digits\
-                 or c in self.character]
-        # verifies if the sudoku contains the correct number of characters
-        if len(chars) != self.size_sudoku * self.size_sudoku:
-            return False
-        else:
-            return True
-    
+   
     def get_grid_values(self, grid_sudoku):
         """Converts a string sudoku raw data in a matrixm.
            Returns a matrix [][]
@@ -61,13 +44,13 @@ class BacktrakingAlgorithm(Algorithm):
             
         """
         chars = [c for c in grid_sudoku if c in self.digits\
-                 or c in self.character]
+                 or c in self.empty_spot_char]
         new_grid_sudoku = []  # the new matrix [][]    
         value = -1  # the current row in the new matrix [][]
-        for i in range (0,len(chars)):
+        for i in range (0, len(chars)):
             if i/self.size_sudoku > value:
                 new_grid_sudoku.append([])
-                value = i/self.size_sudoku
+                value = i / self.size_sudoku
             new_grid_sudoku[value].append(chars[i])
         return new_grid_sudoku
     
@@ -90,9 +73,9 @@ class BacktrakingAlgorithm(Algorithm):
                                         (grid_sudoku)
         if not unassigned_location:
             return True  # sudoku solve success
-        for num in range (1,self.size_sudoku+1):
+        for num in range (1 ,self.size_sudoku + 1):
             # looks if the num is good to replace an empty place
-            if (self.is_safe(grid_sudoku,row, col, num)):
+            if (self.is_safe(grid_sudoku, row, col, num)):
                 # make tentative assigement
                 grid_sudoku[row][col] = str(num)
                 # return if success
@@ -100,7 +83,7 @@ class BacktrakingAlgorithm(Algorithm):
                     return True
                 # failure unmake & try again
                 else:
-                    grid_sudoku[row][col] = str(self.character)        
+                    grid_sudoku[row][col] = str(self.empty_spot_char)        
         return False
      
     def find_unassigned_location(self, grid_sudoku):
@@ -114,11 +97,11 @@ class BacktrakingAlgorithm(Algorithm):
            grid_sudoku -- the matrix[][] of the sudoku to solve
             
         """
-        for row in range (0,self.size_sudoku):
-            for col in range (0,self.size_sudoku):
-                if (grid_sudoku[row][col] == self.character):
+        for row in range (0, self.size_sudoku):
+            for col in range (0, self.size_sudoku):
+                if (grid_sudoku[row][col] == self.empty_spot_char):
                     return row, col, True
-        return row,col, False
+        return row, col, False
 
     def used_in_row(self, grid_sudoku, row_sudoku,num):
         """Returns boolean which indicates whether any assigned entry
@@ -162,9 +145,9 @@ class BacktrakingAlgorithm(Algorithm):
                   square 3x3
                   
         """
-        for row in range(0,3):
-            for col in range(0,3):
-                if(grid_sudoku[row+box_start_row][col+box_start_col] == str(num)):
+        for row in range(0, 3):
+            for col in range(0, 3):
+                if(grid_sudoku[row + box_start_row] [col + box_start_col] == str(num)):
                     return True
         return False
 
@@ -184,7 +167,7 @@ class BacktrakingAlgorithm(Algorithm):
         """
         return not self.used_in_row(grid, row, num)\
                and not self.used_in_col(grid, col, num)\
-               and not self.used_in_box(grid, row - row%3, col - col%3, num)
+               and not self.used_in_box(grid, row - row % 3, col - col % 3, num)
 
     
     def printGrid(self, grid):

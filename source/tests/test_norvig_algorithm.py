@@ -27,9 +27,6 @@ class TestNorvigAlgorithm(unittest.TestCase):
                              'C1', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9',
                              'A1', 'A3', 'B1', 'B3'])
 
-
-
-    ################ Test correct creation of attributes ################
         
     def test_attributes_len_squares_is_81(self):
         self.assertEquals(self.len_squares,len(self.sudoku_test_attributes.squares))
@@ -46,8 +43,6 @@ class TestNorvigAlgorithm(unittest.TestCase):
     def test_solution_time_different_than_zero(self):
         self.sudoku_test_attributes.solve_sudoku()
         self.assertTrue(self.sudoku_test_attributes.get_time()> 0.0)
-
-    ################ Test to verify the solution easy sudokus ################
 
     def test_solution_sudoku_easy_01(self):
                 sudoku_test_easy_01  = NorvigAlgorithm("003020600\n" + \
@@ -417,8 +412,6 @@ class TestNorvigAlgorithm(unittest.TestCase):
                 sudoku_test_easy_10.solve_sudoku()
                 self.assertEquals(sudoku_test_easy_10.solution_norvig,
                                   sudoku_test_easy_10_solution)
-                
-    ################ Test to verify the solution hard sudokus ################
                 
     def test_solution_sudoku_hard_01(self):
                 sudoku_test_hard_01  = NorvigAlgorithm("400000805\n" + \
@@ -793,8 +786,6 @@ class TestNorvigAlgorithm(unittest.TestCase):
                 sudoku_test_hard_10.solve_sudoku()
                 self.assertEquals(sudoku_test_hard_10.solution_norvig,
                                   sudoku_test_hard_10_solution)
-
-    ################ Test validation correct format sudoku data ################
                 
     def test_soduku_to_solve_only_contains_numbers(self):
                 sudoku_test_only_numbers  = NorvigAlgorithm("092300000\n" + \

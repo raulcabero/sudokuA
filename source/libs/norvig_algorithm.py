@@ -4,16 +4,16 @@ from algorithm import Algorithm
 
 class NorvigAlgorithm(Algorithm):
 
-    def __init__(self, sudoku_to_solve, character):
+    def __init__(self, sudoku_to_solve, empty_spot_char):
         """Constructor NorvigAlgorithm.
 
         Keyword arguments:
         sudoku_to_solve -- the string raw data of the sudoku to solve
-        character -- the string character which represents the place to need
+        empty_spot_char -- the string character which represents the place to need
                      filled in the sudoku
         
         """   
-        super(NorvigAlgorithm, self).__init__(sudoku_to_solve, character)
+        super(NorvigAlgorithm, self).__init__(sudoku_to_solve, empty_spot_char)
         # the possible values that the spaces in suduku could contain
         self.digits   = '123456789'
         # the rows that the suduku grid will contain from A to I
@@ -31,23 +31,15 @@ class NorvigAlgorithm(Algorithm):
         self.units = dict((s, [u for u in self.unitlist if s in u])
                      for s in self.squares)
         # each square has 20 peers see http://norvig.com/sudoku.html 
-        self.peers = dict((s, set(sum(self.units[s], []))-set([s]))
+        self.peers = dict((s, set(sum(self.units[s], [])) - set([s]))
                      for s in self.squares)
+        # the result of the sudoku in a Peter Norvig format
+        self.solution_norvig = ""
         
         
-    def cross(self, element_a, element_b):
-        """Cross product of elements in element_a and elements in element_b.
-           
-           Keyword arguments:
-           element_a -- matrix of elements into sudoku
-           element_b -- matrix of elements into sudoku
-
-        """
-
-        return [a+b for a in element_a for b in element_b]
-
-
-        ################ Search ################
+    def cross(self, A, B):
+        """Cross product of elements in A and elements in B."""
+        return [a + b for a in A for b in B]
 
     def solve_sudoku(self):
         """Returns the solution to sudoku using the Norvig Algorithm."""
@@ -55,9 +47,10 @@ class NorvigAlgorithm(Algorithm):
             raise Exception("The sudoku input is incorrect")
         sudoku_to_solve = "Grid\n" + self.sudoku_to_solve
         self.start_tim = time.clock()
-        res = self.search(self.parse_grid(sudoku_to_solve))
+        solution_norvig = self.search(self.parse_grid(sudoku_to_solve))
         self.end_time = time.clock()
-        return res
+        self.solution_norvig = solution_norvig
+        return self.convert_to_matrix(solution_norvig)
 
     def search(self, sudoku_values):
         """Searches the solution to the sudoku using depth-first search and
@@ -78,8 +71,6 @@ class NorvigAlgorithm(Algorithm):
         return self.some(self.search(self.assign(sudoku_values.copy(), s, d))
                 for d in sudoku_values[s])
 
-    ################ Parse a Grid ################
-
     def parse_grid(self, grid_sudoku):
         """Convert grid sudoku to a dict of possible values, {square: digits},
            or return False if a contradiction is detected
@@ -90,7 +81,7 @@ class NorvigAlgorithm(Algorithm):
         """
         # To start, every square can be any digit; then assign values from the grid.
         values = dict((s, self.digits) for s in self.squares)
-        for s,d in self.grid_values(grid_sudoku).items():
+        for s, d in self.grid_values(grid_sudoku).items():
             if d in self.digits and not self.assign(values, s, d):
                 return False # Fail if we can't assign d to square s.
         return values
@@ -103,10 +94,8 @@ class NorvigAlgorithm(Algorithm):
         grid_sudoku -- the grid of the sudoku to solve 
         
         """
-        chars = [c for c in grid_sudoku if c in self.digits or c in self.character]
+        chars = [c for c in grid_sudoku if c in self.digits or c in self.empty_spot_char]
         return dict(zip(self.squares, chars))
-
-    ################ Constraint Propagation ################
 
     def assign(self, values_sudoku, key_sudoku_dic, value_to_replace):
         """Eliminate all the other values (except d) from values[s] and
@@ -140,7 +129,7 @@ class NorvigAlgorithm(Algorithm):
         if value_to_replace not in values_sudoku[key_sudoku_dic]:
             return values_sudoku  # already eliminated
         values_sudoku[key_sudoku_dic] = values_sudoku[key_sudoku_dic].\
-                                        replace(value_to_replace,'')
+                                        replace(value_to_replace, '')
         # (1) if a square s is reduced to one value d2, then eliminate d2 from the peers.
         if len(values_sudoku[key_sudoku_dic]) == 0:
             return False  # Contradiction: removed last value
@@ -162,8 +151,6 @@ class NorvigAlgorithm(Algorithm):
                     return False
         return values_sudoku
 
-    ################ Utilities ################
-
     def some(self, seq):
         """Return some element of seq that is true.
 
@@ -176,15 +163,34 @@ class NorvigAlgorithm(Algorithm):
                 return e
         return False
 
-    ################ Validate input ################
+    def convert_to_matrix(self,values):
+        """Return the solution of the norvig algorithm in a matrix[][].
 
-    def sudoku_data_is_valid(self):
-        """Verifies if the sudoku to solve contains the valid data."""
-        chars = [c for c in self.sudoku_to_solve if c in self.digits\
-                or c in self.character]
-        if len(chars) != 81:
-            return False
-        else:
-            return True
+        Keyword arguments:
+        values -- the sudoku solution in the Peter Norvig's format
+
+        """
+        matrix_sudoku = [self.rows]
+        width = 1 + max(len(values[s]) for s in self.squares)
+        line = '+'.join(['-' * (width * 3)] * 3)
+        for r in range (0, len(self.rows)):
+            row_convert = ''.join(values[self.rows[r] + c].center(width)+('' if c in '36' else '')
+                          for c in self.cols)
+            matrix_sudoku.append(self.get_row_matrix(row_convert))
+        del matrix_sudoku[0]    
+        return matrix_sudoku    
 
 
+    def get_row_matrix(self, row):
+        """Return a row of the solution of sudoku in a array.
+           It deletes the empty spaces
+
+        Keyword arguments:
+        row -- the row of the solution of sudoku in string format
+
+        """
+        row_sudoku = []
+        for i in range (0,len(row)):
+            if row[i] != " ":
+                row_sudoku.append(row[i])
+        return row_sudoku

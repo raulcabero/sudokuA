@@ -1,24 +1,24 @@
-import unittest # pragma: no cover
-import sys # pragma: no cover
-sys.path.append( '../libs' ) # pragma: no cover
-from backtraking_algorithm import BacktrakingAlgorithm # pragma: no cover
+import unittest 
+import sys 
+sys.path.append( '../libs' ) 
+from backtraking_algorithm import BacktrakingAlgorithm 
 
-class TestBacktrakingAlgorithm(unittest.TestCase): # pragma: no cover
+class TestBacktrakingAlgorithm(unittest.TestCase): 
     def setUp(self):
         pass
 
         ################ Test correct solution sudoku ################
 
     def test_verify_solution_easy_sudoku_empty_values_with_zero(self):
-        raw_sudoku  = ("""000000680
-000073009
-309000045
-490000000
-803050902
-000000036
-960000308
-700680000
-028000000""")
+        raw_sudoku  = ("000000680\n" + \
+                       "000073009\n" + \
+                       "309000045\n" + \
+                       "490000000\n" + \
+                       "803050902\n" + \
+                       "000000036\n" + \
+                       "960000308\n" + \
+                       "700680000\n" + \
+                       "028000000\n")
         sudoku_test_solve = BacktrakingAlgorithm(raw_sudoku, "0")
         square_result = [['1', '7', '2', '5', '4', '9', '6', '8', '3'],
                          ['6', '4', '5', '8', '7', '3', '2', '1', '9'],
@@ -32,15 +32,15 @@ class TestBacktrakingAlgorithm(unittest.TestCase): # pragma: no cover
         self.assertEquals(square_result, sudoku_test_solve.solve_sudoku())
 
     def test_verify_solution_easy_sudoku_empty_values_with_dot(self):
-        raw_sudoku  = ("""3.65.84..
-52.......
-.87....31
-..3.1..8.
-9..863..5
-.5..9.6..
-13....25.
-.......74
-..52.63..""")
+        raw_sudoku  = ("3.65.84..\n" + \
+                       "52.......\n" + \
+                       ".87....31\n" + \
+                       "..3.1..8.\n" + \
+                       "9..863..5\n" + \
+                       ".5..9.6..\n" + \
+                       "13....25.\n" + \
+                       ".......74\n" + \
+                       "..52.63..\n")
         sudoku_test_solve = BacktrakingAlgorithm(raw_sudoku, ".")
         square_result = [['3', '1', '6', '5', '7', '8', '4', '9', '2'],
                          ['5', '2', '9', '1', '3', '4', '7', '6', '8'],
@@ -57,15 +57,15 @@ class TestBacktrakingAlgorithm(unittest.TestCase): # pragma: no cover
         ############ Test convertion sudoku raw to matrix ############
         
     def test_convert_raw_sudoku_matrix_empty_values_dot(self):
-        raw_sudoku  = (""".923.....
-....8.1..
-.........
-1.7.4....
-.......65
-8........
-.6.5.2...
-4.....7..
-...9.....""")
+        raw_sudoku  = (".923.....\n" + \
+                       "....8.1..\n" + \
+                       ".........\n" + \
+                       "1.7.4....\n" + \
+                       ".......65\n" + \
+                       "8........\n" + \
+                       ".6.5.2...\n" + \
+                       "4.....7..\n" + \
+                       "...9.....\n")
         sudoku_test_convert = BacktrakingAlgorithm("092300000", ".")
         square_result = [['.', '9', '2', '3', '.', '.', '.', '.', '.'],
                          ['.', '.', '.', '.', '8', '.', '1', '.', '.'],
@@ -81,15 +81,15 @@ class TestBacktrakingAlgorithm(unittest.TestCase): # pragma: no cover
                           sudoku_test_convert.get_grid_values(raw_sudoku))
 
     def test_convert_raw_sudoku_matrix_empty_values_0(self):
-        raw_sudoku  = ("""092300000
-000080100
-000000000
-107040000
-000000065
-800000000
-060502000
-400000700
-000900000""")
+        raw_sudoku  = ("092300000\n" + \
+                       "000080100\n" + \
+                       "000000000\n" + \
+                       "107040000\n" + \
+                       "000000065\n" + \
+                       "800000000\n" + \
+                       "060502000\n" + \
+                       "400000700\n" + \
+                       "000900000\n")
         sudoku_test_convert = BacktrakingAlgorithm("092300000", "0")
         square_result = [['0', '9', '2', '3', '0', '0', '0', '0', '0'],
                          ['0', '0', '0', '0', '8', '0', '1', '0', '0'],
@@ -223,119 +223,119 @@ class TestBacktrakingAlgorithm(unittest.TestCase): # pragma: no cover
         ########## Test validation correct format sudoku data ##########
                 
     def test_soduku_to_solve_only_contains_numbers(self):
-        sudoku_test_only_numbers  = BacktrakingAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000065
-800000000
-060502000
-400000700
-000900000""", "0")
+        sudoku_test_only_numbers  = BacktrakingAlgorithm("092300000\n" + \
+                                                         "000080100\n" + \
+                                                         "000000000\n" + \
+                                                         "107040000\n" + \
+                                                         "000000065\n" + \
+                                                         "800000000\n" + \
+                                                         "060502000\n" + \
+                                                         "400000700\n" + \
+                                                         "000900000\n", "0")
                 
         self.assertTrue(sudoku_test_only_numbers.sudoku_data_is_valid())
 
     def test_soduku_to_solve_cannot_contain_letters(self):
-        sudoku_test_only_numbers  = BacktrakingAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000A65
-800000000
-060502000
-400000C00
-000900000""", "0")
+        sudoku_test_only_numbers  = BacktrakingAlgorithm("092300000\n" + \
+                                                         "000080100\n" + \
+                                                         "000000000\n" + \
+                                                         "107040000\n" + \
+                                                         "000000A65\n" + \
+                                                         "800000000\n" + \
+                                                         "060502000\n" + \
+                                                         "400000C00\n" + \
+                                                         "000900000\n", "0")
                 
         self.assertFalse(sudoku_test_only_numbers.sudoku_data_is_valid())
 
     def test_soduku_to_solve_cannot_contain_dot_as_empty_value_if_the_empty_value_is_zero(self):
-        sudoku_test_only_numbers  = BacktrakingAlgorithm("""092300000
-....80100
-...000000
-107040000
-..0..0465
-800000000
-060502000
-400000200
-000900000""", "0")
+        sudoku_test_only_numbers  = BacktrakingAlgorithm("092300000\n" + \
+                                                         "....80100\n" + \
+                                                         "...000000\n" + \
+                                                         "107040000\n" + \
+                                                         "..0..0465\n" + \
+                                                         "800000000\n" + \
+                                                         "060502000\n" + \
+                                                         "400000200\n" + \
+                                                         "000900000\n", "0")
                 
         self.assertFalse(sudoku_test_only_numbers.sudoku_data_is_valid())
 
     def test_soduku_to_solve_not_contain_spaces_as_empty_value_if_the_empty_value_is_zero(self):
-        sudoku_test_only_numbers  = BacktrakingAlgorithm(""" 923    
-    8 1  
-      1
-1 7 4
-      465
-8        
- 6 5 2   
-4     2  
-   9      """, "0")
+        sudoku_test_only_numbers  = BacktrakingAlgorithm(" 923     \n" + \
+                                                         "    8 1  \n" + \
+                                                         "      1  \n" + \
+                                                         "1 7 4    \n" + \
+                                                         "      465\n" + \
+                                                         "8        \n" + \
+                                                         " 6 5 2   \n" + \
+                                                         "4     2  \n" + \
+                                                         "   9     \n", "0")
                 
         self.assertFalse(sudoku_test_only_numbers.sudoku_data_is_valid())
 
     def test_soduku_to_solve_is_valid_when_contains_81_numbers(self):
-        sudoku_test_only_numbers  = BacktrakingAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000065
-800000000
-060502000
-400000700
-000900000""", "0")
+        sudoku_test_only_numbers  = BacktrakingAlgorithm("092300000\n" + \
+                                                         "000080100\n" + \
+                                                         "000000000\n" + \
+                                                         "107040000\n" + \
+                                                         "000000065\n" + \
+                                                         "800000000\n" + \
+                                                         "060502000\n" + \
+                                                         "400000700\n" + \
+                                                         "000900000\n", "0")
                 
         self.assertTrue(sudoku_test_only_numbers.sudoku_data_is_valid())
 
 
     def test_soduku_to_solve_is_invalid_when_contains_less_than_81_numbers(self):
-        sudoku_test_only_numbers  = BacktrakingAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000065
-800000000
-060502000""", "0")
+        sudoku_test_only_numbers  = BacktrakingAlgorithm("092300000\n" + \
+                                                         "000080100\n" + \
+                                                         "000000000\n" + \
+                                                         "107040000\n" + \
+                                                         "000000065\n" + \
+                                                         "800000000\n" + \
+                                                         "060502000\n", "0")
                 
         self.assertFalse(sudoku_test_only_numbers.sudoku_data_is_valid())
 
     def test_soduku_to_solve_is_invalid_when_contains_more_than_81_numbers(self):
-        sudoku_test_only_numbers  = BacktrakingAlgorithm("""092300000
-000080100
-000000000
-107040000
-000000065
-800000000
-060502000
-400000700
-000900000
-000000065
-060502000""", "0")
+        sudoku_test_only_numbers  = BacktrakingAlgorithm("092300000\n" + \
+                                                         "000080100\n" + \
+                                                         "000000000\n" + \
+                                                         "107040000\n" + \
+                                                         "000000065\n" + \
+                                                         "800000000\n" + \
+                                                         "060502000\n" + \
+                                                         "400000700\n" + \
+                                                         "000900000\n" + \
+                                                         "000000065\n" + \
+                                                         "060502000\n", "0")
 
     def test_soduku_to_solve_is_valid_when_characters_to_replace_are_dot(self):
-        sudoku_test_only_numbers  = BacktrakingAlgorithm(""".923.....
-....8.1..
-.........
-1.7.4....
-.......65
-8........
-.6.5.2...
-4.....7..
-...9.....""", ".")
+        sudoku_test_only_numbers  = BacktrakingAlgorithm(".923.....\n" + \
+                                                         "....8.1..\n" + \
+                                                         ".........\n" + \
+                                                         "1.7.4....\n" + \
+                                                         ".......65\n" + \
+                                                         "8........\n" + \
+                                                         ".6.5.2...\n" + \
+                                                         "4.....7..\n" + \
+                                                         "...9.....\n", ".")
 
     def test_soduku_to_solve_is_valid_when_characters_to_replace_are_porcentage(self):
-        sudoku_test_only_numbers  = BacktrakingAlgorithm("""%923%%%%%
-%%%%8%1%%
-%%%%%%%%%
-1%7%4%%%%
-%%%%%%%65
-8%%%%%%%%
-%6%5%2%%%
-4%%%%%7%%
-%%%9%%%%%""", "%")
+        sudoku_test_only_numbers  = BacktrakingAlgorithm("%923%%%%%\n" + \
+                                                         "%%%%8%1%%\n" + \
+                                                         "%%%%%%%%%\n" + \
+                                                         "1%7%4%%%%\n" + \
+                                                         "%%%%%%%65\n" + \
+                                                         "8%%%%%%%%\n" + \
+                                                         "%6%5%2%%%\n" + \
+                                                         "4%%%%%7%%\n" + \
+                                                         "%%%9%%%%%\n", "%")
                 
         self.assertTrue(sudoku_test_only_numbers.sudoku_data_is_valid())
 
-if __name__ == "__main__": # pragma: no cover
+if __name__ == "__main__":
     unittest.main()
     

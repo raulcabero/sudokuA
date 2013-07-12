@@ -51,4 +51,41 @@ class TXTHandler:
                 file_name_to_write = self.get_file_name(path, file_name, new_number_file)
         return file_name_to_write
 
+    def get_sudoku_data(self, file_name):
+        """
+        Given the a txt file it converts the
+        each row in a valid row entry for the sudoku solver
+        Returns a matrix[][] which contain the sudoku data
+        and its size
 
+        Keyword arguments:
+        res -- contains the sudoku and its size
+        sudoku -- contains the lines for the sudoku
+        sudoku1 -- contains the lines for the sudoku without spaces
+        file_string -- used for reading the txt file lines
+        sep -- used as separator in order to mark the end of a sudoku
+        size_sudoku -- stores the sudoku's size
+
+        """
+        res = []      
+        sudoku = ""
+        sudoku1 = ""
+        sep = '\n' 
+        
+        file_string = file('file_name').readlines()
+        
+        for line in range(0, len(file_string)):
+            sudoku = sudoku + file_string[line]
+            sudoku1 = sudoku1 + file_string[line].strip('\n')
+            if file_string[line] == sep:
+                aux = []
+                sudoku = sudoku.strip('\n')
+                aux.append(sudoku)
+                size_sudoku = math.sqrt(len(sudoku1))                       
+                if size_sudoku % 1 > 0:
+                    size_sudoku = -1
+                aux.append(int(size_sudoku))
+                res.append(aux)
+                sudoku = ""
+                sudoku1 = ""
+        print res
