@@ -1,5 +1,6 @@
 import os
 from csv_handler import CSVHandler
+from cmd_handler import CMDHandler
 
 class ImportData:
     extension_file_csv = ".csv"
@@ -10,6 +11,7 @@ class ImportData:
         data from different inputs such as csv or txt
         """
         self.csv_handler = CSVHandler()
+        self.cmd_handler = CMDHandler()
     
     def read_sudoku_data_from_file(self, sudoku_file):
         """
@@ -23,16 +25,26 @@ class ImportData:
                        sudoku data
 
         """
-        ext = self.guess_extension(sudoku_file)
+        ext = self.get_extension_file(sudoku_file)
         matrix_sudoku = []
         if ext == self.extension_file_csv:
             matrix_sudoku = self.csv_handler.get_rows_sudoku_data(sudoku_file, ",")
-        if len(matrix_sudoku) > 0:
-            if matrix_sudoku[0][1] != -1:
-                return matrix_sudoku
         return matrix_sudoku
 
-    def guess_extension(self, filename):
+    def read_sudoku_data_from_line(self, line):
+        """
+        Read the sudoku data form a line entered form comand line
+        Return a matrix[][] wihich contains the sudoku data and
+        its sudoku size
+
+        Keyword arguments:
+        line -- the line string entered by the user
+
+        """
+        matrix_sudoku = self.cmd_handler.get_rows_sudoku_data(line)
+        return matrix_sudoku
+    
+    def get_extension_file(self, filename):
         """
         Gess the extension of a given filename
 

@@ -66,24 +66,24 @@ class TestImportData(unittest.TestCase):
         os.remove('empty.csv')
         os.remove('testvalidcsv2sudokus.csv')
 
-    def test_guess_extension_csv(self):
+    def test_get_extension_csv(self):
         import_data = ImportData()
-        ext = import_data.guess_extension('testvalidcsv.csv')
+        ext = import_data.get_extension_file('testvalidcsv.csv')
         self.assertEquals(".csv", ext)
 
-    def test_guess_extension_different_csv_double_extention(self):
+    def test_get_extension_different_csv_double_extention(self):
         import_data = ImportData()
-        ext = import_data.guess_extension('testinvalidcsvext.csv.mp5')
+        ext = import_data.get_extension_file('testinvalidcsvext.csv.mp5')
         self.assertEquals(".mp5", ext)
         
-    def test_guess_extension_non_exist_file(self):
+    def test_get_extension_non_exist_file(self):
         import_data = ImportData()
-        ext = import_data.guess_extension('non_exist')
+        ext = import_data.get_extension_file('non_exist')
         self.assertEquals("", ext)
 
-    def test_guess_extension_double_extension(self):
+    def test_get_extension_double_extension(self):
         import_data = ImportData()
-        ext = import_data.guess_extension('file.tar.gz')
+        ext = import_data.get_extension_file('file.tar.gz')
         self.assertEquals(".tar.gz", ext)
         
     def test_read_sudoku_from_valid_csv(self):
@@ -137,6 +137,32 @@ class TestImportData(unittest.TestCase):
         self.assertEquals(exp_val, sudoku[1][0])
         self.assertEquals(sudoku_size, sudoku[0][1])
         self.assertEquals(sudoku_size, sudoku[1][1])
+
+    def test_read_valid_sudoku_from_cmd_line(self):
+        sudoku_size = 9
+        input_line = "000000680000073009309000045490000000803050" + \
+                      "902000000036960000308700680000028000000"
+        import_data = ImportData()
+        exp_result = "000000680\n" + \
+                     "000073009\n" + \
+                     "309000045\n" + \
+                     "490000000\n" + \
+                     "803050902\n" + \
+                     "000000036\n" + \
+                     "960000308\n" + \
+                     "700680000\n" + \
+                     "028000000\n"
+        sudoku = import_data.read_sudoku_data_from_line(input_line)
+        self.assertEquals(exp_result, sudoku[0][0])
+        self.assertEquals(sudoku_size, sudoku[0][1])
+
+    def test_read_invalid_sudoku_from_cmd_line(self):
+        sudoku_size = -1
+        input_line = "000000680000073009309000045490000000803050902000000036"
+        import_data = ImportData()
+        sudoku = import_data.read_sudoku_data_from_line(input_line)
+        self.assertEquals(input_line, sudoku[0][0])
+        self.assertEquals(sudoku_size, sudoku[0][1])
 
 if __name__ == "__main__":
     unittest.main()
