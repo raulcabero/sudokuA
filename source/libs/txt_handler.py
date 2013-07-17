@@ -1,4 +1,5 @@
 import os
+import math
 class TXTHandler:
     
     def write_sudoku(self, path, file_name, string_to_write):
@@ -16,40 +17,15 @@ class TXTHandler:
         """
         sudoku_was_write = False
         if os.path.exists(path):
-            file_name = self.get_file_name(path, file_name, 0)
             try:
-                myFile = open(path+file_name, 'w')
-                myFile.write(string_to_write)
-                myFile.close()
+                my_file = open(path+file_name, 'w')
+                my_file.write(string_to_write)
+                my_file.close()
                 sudoku_was_write = True
             except:
                 sudoku_was_write = False
         return sudoku_was_write
 
-    def get_file_name(self, path, file_name, number_file):
-        """
-        Returns a non-exist file name. If the given file name already
-        exists it add a number to the end the file and if the new file
-        name does not exist return that name
-
-        Keyword arguments:
-        path -- the path of the directory where the file will be created
-        file_name -- the file name of the file that will contain the
-                     sudoku data
-        number_file -- the start number that will be added to the end of
-                       the file
-                       
-        """
-        if not os.path.isfile(path + file_name):
-            file_name_to_write =  file_name
-        else:
-            new_number_file = number_file + 1
-            new_file_name = file_name[0:(len(file_name)-4)] + str(new_number_file)+'.txt'
-            if not os.path.isfile(path + new_file_name):
-                file_name_to_write =  new_file_name
-            else:
-                file_name_to_write = self.get_file_name(path, file_name, new_number_file)
-        return file_name_to_write
 
     def get_sudoku_data(self, file_name):
         """
@@ -72,20 +48,30 @@ class TXTHandler:
         sudoku1 = ""
         sep = '\n' 
         
-        file_string = file('file_name').readlines()
+        file_string = file(file_name).readlines()
+        #print 'hola', file_string
+        #print len(file_string)
         
         for line in range(0, len(file_string)):
+            #print file_string[line]
             sudoku = sudoku + file_string[line]
             sudoku1 = sudoku1 + file_string[line].strip('\n')
-            if file_string[line] == sep:
+            if file_string[line] == sep or line == len(file_string)-1:
+                #print 'test'
                 aux = []
                 sudoku = sudoku.strip('\n')
                 aux.append(sudoku)
                 size_sudoku = math.sqrt(len(sudoku1))                       
                 if size_sudoku % 1 > 0:
                     size_sudoku = -1
-                aux.append(int(size_sudoku))
-                res.append(aux)
+                if size_sudoku != 0:
+                    aux.append(int(size_sudoku))
+                    res.append(aux)
                 sudoku = ""
                 sudoku1 = ""
-        print res
+            #print line
+        #print len (res)
+        return res
+
+#txt_handler = TXTHandler()
+#print txt_handler.get_sudoku_data('sudoku1.txt')

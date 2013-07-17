@@ -37,20 +37,30 @@ class NorvigAlgorithm(Algorithm):
         self.solution_norvig = ""
         
         
-    def cross(self, A, B):
-        """Cross product of elements in A and elements in B."""
-        return [a + b for a in A for b in B]
+    def cross(self, element_a, element_b):
+        """Cross product of elements in A and elements in B.
+
+        Keyword arguments:
+        element_a -- the element which will be cross product
+        element_b -- the element which will be cross product
+        """
+        return [a + b for a in element_a for b in element_b]
 
     def solve_sudoku(self):
-        """Returns the solution to sudoku using the Norvig Algorithm."""
-        if self.sudoku_data_is_valid() == False:
-            raise Exception("The sudoku input is incorrect")
-        sudoku_to_solve = "Grid\n" + self.sudoku_to_solve
-        self.start_tim = time.clock()
-        solution_norvig = self.search(self.parse_grid(sudoku_to_solve))
-        self.end_time = time.clock()
-        self.solution_norvig = solution_norvig
-        return self.convert_to_matrix(solution_norvig)
+        """Returns the solution in a matrix[][] to sudoku using
+           the Norvig Algorithm.
+    
+        """
+        sudoku_solved = []
+        if self.sudoku_data_is_valid() is True:
+            sudoku_to_solve = "Grid\n" + self.sudoku_to_solve
+            self.start_time = time.clock()
+            solution_norvig = self.search(self.parse_grid(sudoku_to_solve))
+            self.end_time = time.clock()
+            self.solution_norvig = solution_norvig
+            if type(solution_norvig) != type(True):
+                sudoku_solved = self.convert_to_matrix(solution_norvig)
+        return sudoku_solved
 
     def search(self, sudoku_values):
         """Searches the solution to the sudoku using depth-first search and
@@ -163,7 +173,7 @@ class NorvigAlgorithm(Algorithm):
                 return e
         return False
 
-    def convert_to_matrix(self,values):
+    def convert_to_matrix(self, values):
         """Return the solution of the norvig algorithm in a matrix[][].
 
         Keyword arguments:
@@ -194,3 +204,4 @@ class NorvigAlgorithm(Algorithm):
             if row[i] != " ":
                 row_sudoku.append(row[i])
         return row_sudoku
+

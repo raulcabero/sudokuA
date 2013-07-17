@@ -25,8 +25,9 @@ class CMDHandler:
         size_sudoku = math.sqrt(len(new_data))
         if size_sudoku % 1 > 0:
             size_sudoku = self.invalid_sudoku_size
-        size_sudoku = int(size_sudoku)
-        new_data = self.add_new_lines(new_data, size_sudoku)
+        else:
+            size_sudoku = int(size_sudoku)
+            new_data = self.add_new_lines(new_data, size_sudoku)
         sudoku_data.append(new_data)
         sudoku_data.append(size_sudoku)
         sudokus.append(sudoku_data)
@@ -46,8 +47,6 @@ class CMDHandler:
 
         """
         new_data = ""
-        if add_in_character_num == self.invalid_sudoku_size:
-            return data
         for i in range(0, len(data)):
             if i % add_in_character_num == 0 and i != 0:
                 new_data = new_data + "\n" + data[i]

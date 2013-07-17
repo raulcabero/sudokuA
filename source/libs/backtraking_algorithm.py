@@ -23,17 +23,17 @@ class BacktrakingAlgorithm(Algorithm):
            Backtraking Algorithm.
            
         """
+        sudoku_solved = []
         # validate is the sudoku raw data is valid
-        if self.sudoku_data_is_valid() == False:
-            raise Exception("The sudoku input is incorrect")
-        # starts the timing of the sudoku solution
-        self.start_tim = time.clock()
-        # starts the bactraking algoritm
-        if not self.is_sudoku_solve(self.grid):
-            raise Exception("The sudoku could not be solved")
-        # stop the timing
-        self.end_time = time.clock()
-        return self.grid
+        if self.sudoku_data_is_valid() is True:
+          # starts the timing of the sudoku solution
+          self.start_time = time.clock()
+          # starts the bactraking algoritm
+          if self.is_sudoku_solve(self.grid) is True:
+              sudoku_solved = self.grid
+          # stop the timing
+          self.end_time = time.clock()
+        return sudoku_solved
    
     def get_grid_values(self, grid_sudoku):
         """Converts a string sudoku raw data in a matrixm.
@@ -168,15 +168,4 @@ class BacktrakingAlgorithm(Algorithm):
         return not self.used_in_row(grid, row, num)\
                and not self.used_in_col(grid, col, num)\
                and not self.used_in_box(grid, row - row % 3, col - col % 3, num)
-
-    
-    def printGrid(self, grid):
-        """Print a grid
-
-           Keyword arguments:
-           grid -- the matrix[][] of the sudoku to print
-                  
-        """
-        for row in range(0, self.size_sudoku):
-            print grid[row]
 
